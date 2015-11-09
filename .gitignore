@@ -1,3 +1,8 @@
 packman
 .stack-work
 *_flymake.hs
+*~
+serialized
+app/BasicExample
+app/Relink1
+app/Relink2
