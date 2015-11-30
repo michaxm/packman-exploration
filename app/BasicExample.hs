@@ -1,7 +1,11 @@
+module Main where
+
+import Data.Binary
 import Data.Char (isLower)
+import qualified Data.ByteString.Lazy as L
+import Data.Typeable (Typeable)
 import GHC.Packing
 
-import Lib
 
 main = do
 
@@ -15,10 +19,6 @@ main = do
   print bs
   unwrapFromBinary bs >>= apply
 
-  putStrLn "I did not really bother to make serialization with read/show work, deserialization will fail:"
-  str <- wrapToString f
-  print str
-  unwrapFromString str >>= apply
   where
     -- serialization and deserialization both need monomorphism, tried an example with an inferred function type here
     f = isLower
@@ -27,3 +27,10 @@ main = do
         -- ... show needs monomorphism, too ..
         toStr :: [Bool] -> String
         toStr = show
+
+wrapToBinary :: (Typeable a) => a -> IO L.ByteString
+wrapToBinary a = trySerialize a >>= return . encode
+  
+unwrapFromBinary :: (Typeable a) => L.ByteString -> IO a
+unwrapFromBinary = deserialize . decode
+

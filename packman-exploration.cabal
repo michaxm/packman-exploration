@@ -28,8 +28,9 @@ executable basic-example
   main-is:             BasicExample.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , packman-exploration
                      , packman
+                     , binary
+                     , bytestring
   default-language:    Haskell2010
 
 executable relink1
@@ -38,9 +39,9 @@ executable relink1
   other-modules:       Module
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , bytestring
-                     , packman-exploration
                      , packman
+                     , packman-exploration
+                     , bytestring
   default-language:    Haskell2010
 
 executable relink2
@@ -49,7 +50,8 @@ executable relink2
   other-modules:       Module
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , bytestring
+                     , packman
                      , packman-exploration
+                     , bytestring
                      , packman
   default-language:    Haskell2010
