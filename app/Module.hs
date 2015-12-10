@@ -1,4 +1,7 @@
-module Module (f) where
+module Module (serializedFunction, innerSerializedFunction) where
 
-f :: String -> String
-f = (++ "append1")
+serializedFunction :: String -> String
+serializedFunction = innerSerializedFunction
+
+innerSerializedFunction :: String -> String
+innerSerializedFunction = (++ "append1")
