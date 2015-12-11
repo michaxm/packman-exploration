@@ -16,11 +16,16 @@ cabal-version:       >=1.18
 library
   hs-source-dirs:      src
   exposed-modules:     Lib
+                     , PointerTransformation
   other-modules:       
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall -Werror
   build-depends:       base >= 4.7 && < 5
                      , packman
                      , binary
                      , bytestring
+                     , containers
+                     , process
+                     , split
   default-language:    Haskell2010
 
 executable basic-example
@@ -49,6 +54,18 @@ executable relink2
   main-is:             Relink2.hs
   other-modules:       Module
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , packman
+                     , packman-exploration
+                     , bytestring
+                     , packman
+  default-language:    Haskell2010
+
+executable transform-for-relink
+  hs-source-dirs:      app
+  main-is:             TransformForRelink.hs
+  other-modules:       Module
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall -Werror
   build-depends:       base
                      , packman
                      , packman-exploration
