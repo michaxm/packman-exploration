@@ -1,7 +1,6 @@
 module Lib where
 
 import Data.Binary
-import qualified Data.ByteString as B
 import qualified Data.ByteString.Lazy as L
 import Data.Typeable (Typeable)
 import GHC.Packing
